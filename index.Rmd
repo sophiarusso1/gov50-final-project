@@ -11,9 +11,12 @@ output:
 
 ## Project thoughts
 
+
 ```{r}
 library(tidyverse)
-nonvoters_data <- read_csv("data/nonvoters_data.csv")
+library(readr)
+nonvoters_data <- read_csv("nonvoters_data.csv")
 nonvoters_data
 ```
+For my project, I will be exploring whether or not the ability of people to vote has a relation to the party that nonvoters most identify with. Specifically, I will be determining whether or not a person's party has a correlation to why they do not vote in regards to work boundaries. I will see if Democrats, who are more likely to work more than one job, have a more challenging time to make it to the polls. Similarly, I will examine if Republicans, who are more likely to work one job, have an advantage at all. My variables of interest will be the party that respondents most identify with and their reasoning for not usually voting, which were measured through a survey and translated into data results through a numeric code. My outcome variable of interest is the correlation between the two variables and I will measure it by average. Data that would support my hypothesis would be a larger average of Democrats that don't vote because of difficulties getting off of work, or the same with Republicans. Furthermore, data that would disprove my hyothesis would be similar averages of such guidelines.
 
