@@ -9,7 +9,7 @@ output:
 
 
 
-## Project thoughts
+## Disparities in Voter Turnout Based on Political Party Affiliation Due to Work 
 
 
 ```{r}
@@ -18,5 +18,45 @@ library(readr)
 nonvoters_data <- read_csv("nonvoters_data.csv")
 nonvoters_data
 ```
-For my project, I will be exploring whether or not the ability of people to vote has a relation to the party that nonvoters most identify with. Specifically, I will be determining whether or not a person's party has a correlation to why they do not vote in regards to work boundaries. I will see if Democrats, who are more likely to work more than one job, have a more challenging time to make it to the polls. Similarly, I will examine if Republicans, who are more likely to work one job, have an advantage at all. My variables of interest will be the party that respondents most identify with and their reasoning for not usually voting, which were measured through a survey and translated into data results through a numeric code. My outcome variable of interest is the correlation between the two variables and I will measure it by average. Data that would support my hypothesis would be a larger average of Democrats that don't vote because of difficulties getting off of work, or the same with Republicans. Furthermore, data that would disprove my hyothesis would be similar averages of such guidelines.
+  For my project, I will be exploring whether or not the ability of people to get off work to vote has a relation to the party that they most identify with. Specifically, I will be determining whether or not a person's party has a correlation to why they do not vote in regards to work boundaries. I will see if Democrats or Republicans have a more challenging time making it to the polls. My initial hypothesis for this project is that Democrats will be less likely to vote in 2020 because they were less likely to be able to get time off from work or other personal commitments. My reasoning for this hypothesis is that Democrats in 2020 were less optimistic and favorable of the economic state of the U.S. in comparison to Republicans, thus I would assume that they found their personal financial status more worrying and thus prioritized work over the polls.
+  My variables of interest will be the party that respondents most identify with and their reasoning for not usually voting, which were measured through a survey and translated into data results through a numeric code. My outcome variable of interest is the correlation between the two variables and I will measure it by average. Data that would support my hypothesis would be a larger average of Democrats that don't vote because of difficulties getting off of work, or the same with Republicans. Furthermore, data that would disprove my hypothesis would be similar averages of such guidelines.
+
+
+```{r}
+clean_df <- nonvoters_data |> 
+  select(voted = Q21, party = Q30, work = Q29_5) |>
+  mutate(voted_binary = ifelse(voted == 1, 1, 0),
+         voted_text = ifelse(voted == 1, "Voted", "Not voted"),
+         party_binary = ifelse(party == 1, 1, 0),
+         party_text = ifelse(party == 1, "Republican", "Democrat")) 
+```
+
+```{r}
+clean_df |>
+  ggplot(aes(x=voted_text, fill = party_text)) +
+  geom_bar(position = "dodge") +
+  theme_bw() +
+  scale_fill_manual(name  ="Political Party", values = c(Democrat = "steelblue1", Republican = "indianred1")) +
+  labs(x = "Voted Breakdown by Party",
+y = "Amount of Votes", title = "Voting Numbers Broken Down by Voter's Party", 
+caption = "Data Source: FiveThirtyEight, 2020") 
+clean_df
+```
+SIMPLE SENTENCES EXPLAINING VISUALIZATION 
+
+
+```{r}
+clean_df |>
+  filter(voted_binary == 0) |>
+  filter(work == 1)|>
+  ggplot(aes(x=factor(work), fill = party_text)) +
+  geom_bar(position = "dodge") +
+  theme_bw() +
+  scale_fill_manual(name  ="Political Party", values = c(Democrat = "steelblue1", Republican = "indianred1")) +
+  labs(x = "Political Party",
+       y = "Amount of Votes", 
+       title = "Breakdown of Those Who Did Not Vote Due to Work",
+       caption = "Data Source: FiveThirtyEight, 2020") 
+```
+FULL ANALYSIS THAT ANSWERS RESEARCH QUESTION 
 
