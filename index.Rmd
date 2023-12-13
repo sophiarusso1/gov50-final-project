@@ -73,21 +73,34 @@ clean_df
 
 FULL ANALYSIS THAT ANSWERS RESEARCH QUESTION 
 
+```{r}
+data_new <- clean_df |>
+  filter(!is.na(work)) |>
+  mutate(work_binary = if_else(work == -1, 0, 1))
+
+ate <- data_new |>
+  group_by(party_text) |>
+  summarise(mean = mean(work_binary, na.rm = TRUE))
+ate
+
+ate |>
+knitr::kable(digits = 2) 
+```
 
 
 ```{r}
 data_new <- clean_df |>
-  filter(!is.na(work == 1), !is.na(party_text), !is.nan(work == 1), !is.nan(party_text), is.finite(work == 1), is.finite(party_text))
-data_new
+  filter(!is.na(work)) |>
+  mutate(work_binary = if_else(work == -1, 0, 1))
 
 
-
-work_fit <- lm(work_text ~ party_text, data = data_new) 
-work_fit 
+work_fit <- lm(work_binary ~ party_text, data = data_new) 
+summary(work_fit)
 
 ```
 
 ```{r}
-modelsummary::modelsummary(lm1, statistic = c("s.e. = {std.error}", "p = {p.value}"), gof_map = c("nobs", "r.squared", "adj.r.squared"))
+modelsummary::modelsummary(work_fit, statistic = c("s.e. = {std.error}", "p = {p.value}"), gof_map = c("nobs", "r.squared", "adj.r.squared"))
 ```
+
 
