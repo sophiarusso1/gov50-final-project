@@ -11,6 +11,7 @@ output:
 
 ## Disparities in Voter Turnout Based on Political Party Affiliation Due to Work 
 
+  For my project, I will be exploring whether or not the ability of people to get off work to vote has a relation to the party that they most identify with. Specifically, I will be determining whether or not a person's party has a correlation to why they do not vote in regards to work boundaries. I will see if Democrats or Republicans have a more challenging time making it to the polls. My initial hypothesis for this project is that Democrats will be less likely to vote in 2020 because they were less likely to be able to get time off from work or other personal commitments. My reasoning for this hypothesis is that Democrats in 2020 were less optimistic of the economic state of the U.S. in comparison to Republicans, thus I would assume that they found their personal financial and job status more worrying and therefore prioritized work over the polls. This is an important question because it can show a disparity in the ability of people of different parties to vote, thus making suffrage unequal.
 
 ```{r}
 library(tidyverse)
@@ -18,9 +19,10 @@ library(readr)
 nonvoters_data <- read_csv("nonvoters_data.csv")
 nonvoters_data
 ```
-  For my project, I will be exploring whether or not the ability of people to get off work to vote has a relation to the party that they most identify with. Specifically, I will be determining whether or not a person's party has a correlation to why they do not vote in regards to work boundaries. I will see if Democrats or Republicans have a more challenging time making it to the polls. My initial hypothesis for this project is that Democrats will be less likely to vote in 2020 because they were less likely to be able to get time off from work or other personal commitments. My reasoning for this hypothesis is that Democrats in 2020 were less optimistic of the economic state of the U.S. in comparison to Republicans, thus I would assume that they found their personal financial and job status more worrying and therefore prioritized work over the polls. This is an important question because it can show a disparity in the ability of people of different parties to vote, thus making suffrage unequal.
-  
+
+  The data that I have selected to use to answer my research question comes from polling done by Ipsos for the political database FiveThirtyEight and is cross-sectional. The data was collected for the 2020 election, a presidential election, with the purpose to understand why millions of Americans do not vote, despite being eligible. Much of the polling questions on voting were done with acknowledgement of mail-in ballots, as that became widely available due to the rise of the COVID-19 pandemic. The poll surveyed 8,327 respondents and was additionally weighted according to general population benchmarks for U.S. citizens based on data from the U.S. Census Bureau’s Current Population Survey in March 2019.    
   My variables of interest will be the party that respondents most identify with and their reasoning for not usually voting, which were measured through a survey and translated into data results through a numeric code. My outcome variable of interest is the correlation between the two variables and I will measure it by average. Data that would support my hypothesis would be a larger average of Democrats that don't vote because of difficulties getting off of work. Furthermore, data that would disprove my hypothesis would be similar averages of both parties or a lower average of Democrats than Republicans that could not vote because of work reasons.
+  
 
 
 ```{r}
@@ -54,7 +56,7 @@ clean_df |>
 select(voted_text, party_text) |>
 knitr::kable(digits = 2) 
 ```
-The above graph depicts the breakdown of the respondents separated into the political party they most identify with (Democrat or Republican) that voted or did not to vote in 2020. Despite having similar numbers
+The above graph depicts the breakdown of the respondents separated into the political party they most identify with (Democrat or Republican) that voted or did not to vote in 2020. Despite having similar numbers, the graph depicted shows that more of the respondents identified as Democrats overall, this this variable has the greatest values of who voted and who did not vote. The independent variable of this graph is the respondents' party identifications, and the dependent variables are if they voted or not.  
 
 
 ```{r}
@@ -71,7 +73,9 @@ clean_df |>
 clean_df
 ```
 
-FULL ANALYSIS THAT ANSWERS RESEARCH QUESTION 
+In the graph above, it can de determined that Democrats that said the did not vote cited work reasons as a challenge in comparison to that of Republicans. Thus, my hypothesis is proven by the breakdown of this graph. In this main graph, the key dependent variable is the amount of non-votes due to work and the independent variable is the party of which the respondents belong to, either Democrat or Republican. Both of these variables were measured through a survey format. 
+
+
 
 ```{r}
 data_new <- clean_df |>
@@ -87,6 +91,7 @@ ate |>
 knitr::kable(digits = 2) 
 ```
 
+The table above shows that the average treatment effect (ATE) means for Democrats is 0.24 and 0.19 for Republicans, thus showing numerically that Democrats were more likely to cite work as their reason for not making it to the polls, in comparison to Republicans.
 
 ```{r}
 data_new <- clean_df |>
@@ -97,10 +102,38 @@ data_new <- clean_df |>
 work_fit <- lm(work_binary ~ party_text, data = data_new) 
 summary(work_fit)
 
+coef(work_fit)
+
+library(broom)
+augment(work_fit) |> head()
+
 ```
 
+
 ```{r}
-modelsummary::modelsummary(work_fit, statistic = c("s.e. = {std.error}", "p = {p.value}"), gof_map = c("nobs", "r.squared", "adj.r.squared"))
+library(broom)
+fit_table <- tidy(work_fit)
+var_labels <- c(
+"(Intercept)" = "Intercept",
+"party_textRepublican" = "Republican Party")
+
+
+modelsummary::modelsummary(work_fit, statistic = c("s.e. = {std.error}",
+"p = {p.value}"),
+coef_map = var_labels,
+gof_map = c("nobs", "r.squared", "adj.r.squared"))
+
+party_se <- fit_table |>
+filter(term == "party_textRepublican") |>
+pull(std.error)
+
+party_pval <- fit_table |>
+filter(term == "party_textRepublican") |>
+pull(p.value)
 ```
+
+  The coefficient of interest is the party idetification (ex. Republican). Further, the estimated coefficient for the party coefficient is about -0.053 and the standard error is about 0.039, making it about that far from its true value. Also, the p-value is about 0.183, meaning we cannot reject the null at the 0.05 and 0.01 test levels, so it is not statistically significant. Also, we should not interpret these effects causally, as we can not remove the possibility of confounders. 
+  
+  In all, the data does show that Democrats find work to be more of a challenge to voting than Republicans, thus my hypothesis is supported. Such a conclusion is significant as the Democratic Party usually has more women and people of color, thus these groups can be part of the Democrats put at a voting disadvantage compared to that of their Republican counterparts. There are limitations to this data such as a breakdown of the types of jobs each of the respondents have. For instance, a section of the survey that asked whether or not the respondent is able to work from home could have assisted in the analysis. Thus, someone that can work from home is more likely to be able to go to their assigned polling place. 
 
 
