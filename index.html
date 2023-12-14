@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data_aging_congress.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","nonvoters_data.csv","nonvoters_data.numbers"]}
+  {"type":"character","attributes":{},"value":["data_aging_congress.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","nonvoters_data.csv","nonvoters_data.numbers"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1520,6 +1520,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h2 id="disparities-in-voter-turnout-based-on-political-party-affiliation-due-to-work">Disparities in Voter Turnout Based on Political Party Affiliation Due to Work</h2>
+<p>For my project, I will be exploring whether or not the ability of people to get off work to vote has a relation to the party that they most identify with. Specifically, I will be determining whether or not a person’s party has a correlation to why they do not vote in regards to work boundaries. I will see if Democrats or Republicans have a more challenging time making it to the polls. My initial hypothesis for this project is that Democrats will be less likely to vote in 2020 because they were less likely to be able to get time off from work or other personal commitments. My reasoning for this hypothesis is that Democrats in 2020 were less optimistic of the economic state of the U.S. in comparison to Republicans, thus I would assume that they found their personal financial and job status more worrying and therefore prioritized work over the polls. This is an important question because it can show a disparity in the ability of people of different parties to vote, thus making suffrage unequal.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
@@ -1548,8 +1549,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   Q8_3 &lt;dbl&gt;, Q8_4 &lt;dbl&gt;, Q8_5 &lt;dbl&gt;, Q8_6 &lt;dbl&gt;, Q8_7 &lt;dbl&gt;,
 #   Q8_8 &lt;dbl&gt;, Q8_9 &lt;dbl&gt;, Q9_1 &lt;dbl&gt;, Q9_2 &lt;dbl&gt;, Q9_3 &lt;dbl&gt;, …</code></pre>
 </div>
-<p>For my project, I will be exploring whether or not the ability of people to get off work to vote has a relation to the party that they most identify with. Specifically, I will be determining whether or not a person’s party has a correlation to why they do not vote in regards to work boundaries. I will see if Democrats or Republicans have a more challenging time making it to the polls. My initial hypothesis for this project is that Democrats will be less likely to vote in 2020 because they were less likely to be able to get time off from work or other personal commitments. My reasoning for this hypothesis is that Democrats in 2020 were less optimistic of the economic state of the U.S. in comparison to Republicans, thus I would assume that they found their personal financial and job status more worrying and therefore prioritized work over the polls. This is an important question because it can show a disparity in the ability of people of different parties to vote, thus making suffrage unequal.</p>
-<p>My variables of interest will be the party that respondents most identify with and their reasoning for not usually voting, which were measured through a survey and translated into data results through a numeric code. My outcome variable of interest is the correlation between the two variables and I will measure it by average. Data that would support my hypothesis would be a larger average of Democrats that don’t vote because of difficulties getting off of work. Furthermore, data that would disprove my hypothesis would be similar averages of both parties or a lower average of Democrats than Republicans that could not vote because of work reasons.</p>
+<p>The data that I have selected to use to answer my research question comes from polling done by Ipsos for the political database FiveThirtyEight and is cross-sectional. The data was collected for the 2020 election, a presidential election, with the purpose to understand why millions of Americans do not vote, despite being eligible. Much of the polling questions on voting were done with acknowledgement of mail-in ballots, as that became widely available due to the rise of the COVID-19 pandemic. The poll surveyed 8,327 respondents and was additionally weighted according to general population benchmarks for U.S. citizens based on data from the U.S. Census Bureau’s Current Population Survey in March 2019.<br />
+My variables of interest will be the party that respondents most identify with and their reasoning for not usually voting, which were measured through a survey and translated into data results through a numeric code. My outcome variable of interest is the correlation between the two variables and I will measure it by average. Data that would support my hypothesis would be a larger average of Democrats that don’t vote because of difficulties getting off of work. Furthermore, data that would disprove my hypothesis would be similar averages of both parties or a lower average of Democrats than Republicans that could not vote because of work reasons.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>clean_df</span> <span class='op'>&lt;-</span> <span class='va'>nonvoters_data</span> <span class='op'>|&gt;</span> </span>
@@ -15345,7 +15346,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
-<p>The above graph depicts the breakdown of the respondents separated into the political party they most identify with (Democrat or Republican) that voted or did not to vote in 2020. Despite having similar numbers</p>
+<p>The above graph depicts the breakdown of the respondents separated into the political party they most identify with (Democrat or Republican) that voted or did not to vote in 2020. Despite having similar numbers, the graph depicted shows that more of the respondents identified as Democrats overall, this this variable has the greatest values of who voted and who did not vote. The independent variable of this graph is the respondents’ party identifications, and the dependent variables are if they voted or not.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>clean_df</span> <span class='op'>|&gt;</span></span>
@@ -15378,7 +15379,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 10     2     1    -1 Did Not Vote Republican Didn&#39;t Miss Due to Work
 # ℹ 3,424 more rows</code></pre>
 </div>
-<p>FULL ANALYSIS THAT ANSWERS RESEARCH QUESTION</p>
+<p>In the graph above, it can de determined that Democrats that said the did not vote cited work reasons as a challenge in comparison to that of Republicans. Thus, my hypothesis is proven by the breakdown of this graph. In this main graph, the key dependent variable is the amount of non-votes due to work and the independent variable is the party of which the respondents belong to, either Democrat or Republican. Both of these variables were measured through a survey format.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data_new</span> <span class='op'>&lt;-</span> <span class='va'>clean_df</span> <span class='op'>|&gt;</span></span>
@@ -15418,6 +15419,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
+<p>The table above shows that the average treatment effect (ATE) means for Democrats is 0.24 and 0.19 for Republicans, thus showing numerically that Democrats were more likely to cite work as their reason for not making it to the polls, in comparison to Republicans.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data_new</span> <span class='op'>&lt;-</span> <span class='va'>clean_df</span> <span class='op'>|&gt;</span></span>
@@ -15446,10 +15448,39 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 0.4149 on 451 degrees of freedom
 Multiple R-squared:  0.003926,  Adjusted R-squared:  0.001718 
 F-statistic: 1.778 on 1 and 451 DF,  p-value: 0.1831</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>work_fit</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>         (Intercept) party_textRepublican 
+          0.24324324          -0.05252159 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>work_fit</span><span class='op'>)</span> <span class='op'>|&gt;</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code># A tibble: 6 × 8
+  work_binary party_text .fitted .resid    .hat .sigma  .cooksd
+        &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+1           0 Republican   0.191 -0.191 0.00515  0.415 0.000550
+2           0 Democrat     0.243 -0.243 0.00386  0.415 0.000669
+3           0 Democrat     0.243 -0.243 0.00386  0.415 0.000669
+4           1 Democrat     0.243  0.757 0.00386  0.414 0.00647 
+5           0 Democrat     0.243 -0.243 0.00386  0.415 0.000669
+6           0 Democrat     0.243 -0.243 0.00386  0.415 0.000669
+# ℹ 1 more variable: .std.resid &lt;dbl&gt;</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/modelsummary/man/modelsummary.html'>modelsummary</a></span><span class='op'>(</span><span class='va'>work_fit</span>, statistic <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"s.e. = {std.error}"</span>, <span class='st'>"p = {p.value}"</span><span class='op'>)</span>, gof_map <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"nobs"</span>, <span class='st'>"r.squared"</span>, <span class='st'>"adj.r.squared"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span></span>
+<span><span class='va'>fit_table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>work_fit</span><span class='op'>)</span></span>
+<span><span class='va'>var_labels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span><span class='st'>"(Intercept)"</span> <span class='op'>=</span> <span class='st'>"Intercept"</span>,</span>
+<span><span class='st'>"party_textRepublican"</span> <span class='op'>=</span> <span class='st'>"Republican Party"</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span><span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/modelsummary/man/modelsummary.html'>modelsummary</a></span><span class='op'>(</span><span class='va'>work_fit</span>, statistic <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"s.e. = {std.error}"</span>,</span>
+<span><span class='st'>"p = {p.value}"</span><span class='op'>)</span>,</span>
+<span>coef_map <span class='op'>=</span> <span class='va'>var_labels</span>,</span>
+<span>gof_map <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"nobs"</span>, <span class='st'>"r.squared"</span>, <span class='st'>"adj.r.squared"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -15464,7 +15495,7 @@ F-statistic: 1.778 on 1 and 451 DF,  p-value: 0.1831</code></pre>
 <tbody>
 <tr>
 <td style="text-align:left;">
-(Intercept)
+Intercept
 </td>
 <td style="text-align:center;">
 0.243
@@ -15486,7 +15517,7 @@ p = &lt;0.001
 </tr>
 <tr>
 <td style="text-align:left;">
-party_textRepublican
+Republican Party
 </td>
 <td style="text-align:center;">
 −0.053
@@ -15532,8 +15563,19 @@ R2 Adj.
 </tr>
 </tbody>
 </table>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>party_se</span> <span class='op'>&lt;-</span> <span class='va'>fit_table</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>term</span> <span class='op'>==</span> <span class='st'>"party_textRepublican"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>std.error</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>party_pval</span> <span class='op'>&lt;-</span> <span class='va'>fit_table</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>term</span> <span class='op'>==</span> <span class='st'>"party_textRepublican"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>p.value</span><span class='op'>)</span></span></code></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+</div>
+<p>The coefficient of interest is the party idetification (ex. Republican). Further, the estimated coefficient for the party coefficient is about -0.053 and the standard error is about 0.039, making it about that far from its true value. Also, the p-value is about 0.183, meaning we cannot reject the null at the 0.05 and 0.01 test levels, so it is not statistically significant. Also, we should not interpret these effects causally, as we can not remove the possibility of confounders.</p>
+<p>In all, the data does show that Democrats find work to be more of a challenge to voting than Republicans, thus my hypothesis is supported. Such a conclusion is significant as the Democratic Party usually has more women and people of color, thus these groups can be part of the Democrats put at a voting disadvantage compared to that of their Republican counterparts. There are limitations to this data such as a breakdown of the types of jobs each of the respondents have. For instance, a section of the survey that asked whether or not the respondent is able to work from home could have assisted in the analysis. Thus, someone that can work from home is more likely to be able to go to their assigned polling place.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
